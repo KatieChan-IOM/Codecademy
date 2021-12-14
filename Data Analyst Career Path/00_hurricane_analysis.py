@@ -1,10 +1,10 @@
 # Python Dictionaries Challenge Project: Hurricane Analysis
-# Completed on 12/12/2021
+# Last updated on 13/12/2021
 
 '''
 Project Goals:
-
-Write several functions that organize and manipulate data about Category 5 Hurricanes, the strongest hurricanes as rated by their wind speed. Each one of these functions will use a number of parameters, conditionals, lists, dictionaries, string manipulation, and return statements.
+Write several functions that organize and manipulate data about Category 5 Hurricanes, the strongest hurricanes as rated by their wind speed. 
+Each one of these functions will use a number of parameters, conditionals, lists, dictionaries, string manipulation, and return statements.
 '''
 
 from collections import defaultdict
@@ -52,7 +52,6 @@ updated_damages = update_damages(damages)
 
 '''
 Additional data collected on the 34 strongest Atlantic hurricanes are provided in a series of lists. The data is organized such that the data at each index, from 0 to 33, corresponds to the same hurricane. 
-
 Write a function that constructs a dictionary made out of the lists, where the keys of the dictionary are the names of the hurricanes, and the values are dictionaries themselves containing a key for each piece of data (Name, Month, Year, Max Sustained Wind, Areas Affected, Damage, Death) about the hurricane.
 '''
 def hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, updated_damages, deaths):
@@ -77,16 +76,8 @@ Write a function that converts the current dictionary of hurricanes to a new dic
 def hurricane_by_year(hurricane_dict):
     hurricane_by_year_dict = {}
 
-    for i in hurricane_dict.values():
-        year = i.get('Year')
-        name = i.get('Name')
-        month = i.get('Month')
-        year = i.get('Year')
-        max_sustained_winds = i.get('Max Sustained Wind')
-        areas_affected = i.get('Areas Affected')
-        updated_damages = i.get('Damage')
-        deaths = i.get('Deaths')
-        hurricane_by_year_dict.update({year: [name, month, year, max_sustained_winds, areas_affected, updated_damages, deaths]})
+    for year in years:
+        hurricane_by_year_dict[year] = [hurricane for hurricane in hurricane_dict.values() if hurricane["Year"] == year]
     return hurricane_by_year_dict
 
 hurricane_by_year(hurricane_dict)
@@ -141,9 +132,7 @@ greatest_number_of_deaths(hurricane_dict)
 
 '''
 Write a function that rates hurricanes on a mortality scale according to the following ratings, where the key is the rating and the value is the upper bound of deaths for that rating.
-
 mortality_scale = { 0: 0, 1: 100, 2: 500, 3: 1000, 4: 10000}
-
 Store the hurricanes in a new dictionary where the keys are mortality ratings and the values are lists containing a dictionary for each hurricane that falls into that mortality rating.
 '''
 def catgeorize_by_mortality(hurricane_dict):
@@ -164,13 +153,13 @@ def catgeorize_by_mortality(hurricane_dict):
         deaths = hurricane_dict[hurricane]["Deaths"]
         if deaths == mortality_scale[0]:
             hurricane_by_mortality[0].append(name)
-        elif deaths < mortality_scale[1]:
+        elif deaths <= mortality_scale[1]:
             hurricane_by_mortality[1].append(name)
-        elif deaths < mortality_scale[2]:
+        elif deaths <= mortality_scale[2]:
             hurricane_by_mortality[2].append(name)
-        elif deaths < mortality_scale[3]:
+        elif deaths <= mortality_scale[3]:
             hurricane_by_mortality[3].append(name)
-        elif deaths < mortality_scale[4]:
+        elif deaths <= mortality_scale[4]:
             hurricane_by_mortality[4].append(name)
         else:
             hurricane_by_mortality[5].append(name)
@@ -197,9 +186,7 @@ greatest_damage(hurricane_dict)
 
 '''
 Write a function that rates hurricanes on a damage scale according to the following ratings, where the key is the rating and the value is the upper bound of damage for that rating.
-
 damage_scale = {0: 0, 1: 100000000, 2: 1000000000, 3: 10000000000, 4: 50000000000}
-
 Store the hurricanes in a new dictionary where the keys are damage ratings and the values are lists containing a dictionary for each hurricane that falls into that damage rating.
 '''
 def catgeorize_by_damage(hurricane_dict):
@@ -224,13 +211,13 @@ def catgeorize_by_damage(hurricane_dict):
             continue
         elif damage == damage_scale[0]:
             hurricane_by_damage[0].append(name)
-        elif damage < damage_scale[1]:
+        elif damage <= damage_scale[1]:
             hurricane_by_damage[1].append(name)
-        elif damage < damage_scale[2]:
+        elif damage <= damage_scale[2]:
             hurricane_by_damage[2].append(name)
-        elif damage < damage_scale[3]:
+        elif damage <= damage_scale[3]:
             hurricane_by_damage[3].append(name)
-        elif damage < damage_scale[4]:
+        elif damage <= damage_scale[4]:
             hurricane_by_damage[4].append(name)
         else:
             hurricane_by_damage[5].append(name)
