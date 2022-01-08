@@ -1,0 +1,19 @@
+'''
+The watch_history table has the following columns:
+
+id
+user_id
+watch_date
+watch_duration_in_minutes
+
+duration, which is the watch event duration, rounded to the closest minute
+count, the number of watch events falling into this “bucket”
+Use COUNT(), GROUP BY, and ORDER BY to create this result and order this data by increasing duration.
+'''
+
+SELECT
+  ROUND(watch_duration_in_minutes,0) as duration,
+  COUNT(*) as count
+FROM watch_history
+GROUP BY duration
+ORDER BY duration ASC;
