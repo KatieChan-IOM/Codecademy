@@ -9,10 +9,10 @@ from collections import defaultdict
 '''
 python -m venv venv
 
-c:\Users\katie\Documents\GitHub\Codecademy\Data_Analyst_Career_Path\venv\Scripts\python.exe -m pip install numpy
-c:\Users\katie\Documents\GitHub\Codecademy\Data_Analyst_Career_Path\venv\Scripts\python.exe -m pip install pandas
-c:\Users\katie\Documents\GitHub\Codecademy\Data_Analyst_Career_Path\venv\Scripts\python.exe -m pip install matplotlib
-c:\Users\katie\Documents\GitHub\Codecademy\Data_Analyst_Career_Path\venv\Scripts\python.exe -m pip install seaborn
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install seaborn
 
 vs code settings: enable this: Execute in file dir
 '''
